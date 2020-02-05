@@ -29,27 +29,27 @@ on what you need.
 "sanity_trilaterate.py" can be used to make circles and see how off our trilateration results are. Change the distances
 according to either "wifiaverage.txt" or "wifiminimum.txt". The AP positions will be same as step 2.
 
-Format of wifi.txt
+Format of wifi.txt:
 
 x y AP_Mac AP_SSID distance_from_AP  (Every AP at every locaiton has around 50 readings)
 
-Format of vision.txt
+Format of vision.txt:
 
 x y x_measured y_measured z_measured pixel_x pixel_y frame_number object_number
 
 
-Format of wifiaverage.txt and wifiminimum.txt
+Format of wifiaverage.txt and wifiminimum.txt:
 
 x y AP_SSID distance
 
-Format of minimumtrilaterate.txt and averagetrilaterate.txt
+Format of minimumtrilaterate.txt and averagetrilaterate.txt:
 
 x y localized_x localized_y
 
-Format for groundtruth.txt
+Format for groundtruth.txt:
 
 x y distance_x(inches) distance_z(ft)
 
-Format for Actual_distance_from_APs.txt
+Format for Actual_distance_from_APs.txt:
 
 x y distance_from1(ft) distance_from2(ft) distance_from3(ft)
