@@ -6,17 +6,8 @@ count = 0
 distance1 = 0.0
 distance2 = 0.0
 distance3 = 0.0
-"""
-AP positions LAB
-AP1x = 0
-AP1y = 0
-AP2x = -7.18
-AP2y = 18.61
-AP3x = 3.47
-AP3y = 18.61
-"""
 
-# AP positions Class
+# AP positions Change according to ReadMe
 AP1x = 0
 AP1y = 0
 AP2x = -6.45
