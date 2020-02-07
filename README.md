@@ -1,8 +1,11 @@
 Run the bashscript run.sh like:
+
 bash run.sh [Directory Name] [min/average] [LSE/Linear]
 
 First Argument is the name of the directory in which your files.
+
 Second argument determines whether we are going to take average or min of raw wifi data for pre trilateration purpose.
+
 Third argument decides the trilateration scheme to use.
 
 
