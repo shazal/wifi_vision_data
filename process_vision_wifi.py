@@ -1,10 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial import distance
+import math
+import sys
 
-measured = open("vision.txt", "r")
-wifi = open("minimumtrilateration.txt", "r")
-ground = open("groundtruth.txt", "r")
+visionfile = sys.argv[1]
+wifitrifile = sys.argv[2]
+groundtruthfile = sys.argv[3]
+
+measured = open(visionfile, "r")
+wifi = open(wifitrifile, "r")
+ground = open(groundtruthfile, "r")
 
 final_arr = []
 x_measure_arr = []
@@ -39,9 +45,9 @@ for lineinmeasure in measured:
 		words  = line.split(" ")
 		x = words[0]
 		y = words[1]
-		x_measure = float(words[2])/39.37
+		x_measure = float(words[2])
 		spl = words[3].split("'");
-		z_measure = (float (spl[0]) * 12 + float (spl[1]))/39.37
+		z_measure = float (words[3])
 		count = int(sep[1])
 		total = 0
 		x_total = 0.0
@@ -65,6 +71,8 @@ for lineinmeasure in measured:
 			x_ave = x_total/count
 			z_ave = z_total/count
 
+			z_ave = math.sqrt(z_ave * z_ave - x_ave * x_ave)
+			
 			final_arr.append([x,y,x_measure, z_measure, x_ave, z_ave])
 			x_measure_arr.append(abs(x_measure))
 			z_measure_arr.append(abs(z_measure))
@@ -258,7 +266,7 @@ plt.ylabel('Euclidian Error', fontsize=16)
 
 plt.show(block=False)
 fig.savefig('WiFi_Z_vs_Euclidian.jpg')
-
+"""
 
 
 for i in range(len(wifi_euclidian)):
@@ -269,7 +277,7 @@ for i in range(len(x_ave_arr)):
 
 for i in range(len(wifi_euclidian)):
 	print(vision_euclidian[i])
-"""
+
 
 fig = plt.figure()
 wifi = plt.scatter(x_wifi_arr, z_wifi_arr,  marker = "+", s = 125)
@@ -286,6 +294,7 @@ plt.legend((wifi, vision, Origional),
            fontsize=10)
 
 for i in range(len(x_wifi_arr)):
+	print(i)
 	plt.annotate(i, (x_wifi_arr[i], z_wifi_arr[i]), size=18)
 	plt.annotate(i, (x_ave_arr[i], z_ave_arr[i]), size=18)
 	plt.annotate(i, (x_measure_scatter[i], z_measure_scatter[i]), size=18)

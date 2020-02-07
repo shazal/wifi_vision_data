@@ -1,6 +1,12 @@
-results = open("wifi.txt", "r")
-averagefile = open("wifiaverage.txt", "a")
-minimumfile = open("wifiminimum.txt", "a")
+import sys
+
+wififile = sys.argv[1]
+wifiaveragefile = sys.argv[2]
+wifiminimumfile = sys.argv[3]
+
+labresults = open(wififile, "r")
+averagefile = open(wifiaveragefile, "w")
+minimumfile = open(wifiminimumfile, "w")
 
 lastAP = ""
 lastx = ""
@@ -9,7 +15,7 @@ maincount = 0
 minimum = 0.0
 average = 0.0
 count = 0
-for line in results:
+for line in labresults:
 	
 	words = line.split(" ")
 	currentx = words[0]
